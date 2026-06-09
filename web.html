@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{--black:#0A0A0A;--ink:#101010;--panel:#141414;--line:rgba(255,255,255,0.14);--line-soft:rgba(255,255,255,0.07);--white:#F5F4F1;--dim:#8A8A87;--dimmer:#5C5C59;}
+  :root{--black:#15161A;--ink:#1B1C21;--panel:#212228;--line:rgba(255,255,255,0.14);--line-soft:rgba(255,255,255,0.07);--white:#F5F4F1;--dim:#8A8A87;--dimmer:#5C5C59;}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:'Space Grotesk',sans-serif;background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -17,7 +17,7 @@
   a{text-decoration:none;color:inherit}
   .wrap{max-width:1240px;margin:0 auto;padding:0 36px}
   .mark{width:40px;height:40px;flex-shrink:0;display:block}
-  nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,0.82);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--line-soft)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(21,22,26,0.82);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--line-soft)}
   .nav-inner{max-width:1240px;margin:0 auto;padding:18px 36px;display:flex;align-items:center;justify-content:space-between}
   .brand{display:flex;align-items:center;gap:14px}
   .brand .name{font-weight:600;font-size:15px;letter-spacing:2px}
@@ -82,7 +82,7 @@
   .ig-badge svg{width:30px;height:30px}
   .ig-badge span{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.5px}
   /* modal */
-  .overlay{position:fixed;inset:0;background:rgba(5,5,5,0.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
+  .overlay{position:fixed;inset:0;background:rgba(10,11,14,0.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
   .overlay.open{display:flex}
   .dialog{background:var(--ink);border:0.5px solid var(--line);max-width:500px;width:100%;max-height:92vh;overflow-y:auto}
   .dialog-head{padding:30px 34px;border-bottom:0.5px solid var(--line-soft);display:flex;align-items:flex-start;justify-content:space-between}
@@ -109,6 +109,13 @@
 </style>
 </head>
 <body>
+<form name="project-inquiry" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="company" />
+  <input type="text" name="service" />
+  <textarea name="details"></textarea>
+</form>
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="brand">
@@ -201,20 +208,21 @@
         <button class="x" onclick="closeModal()">&times;</button>
       </div>
       <div class="dialog-body">
+        <p hidden><label>Do not fill this out: <input name="bot-field" id="botField"></label></p>
         <div class="row2">
-          <div class="fld"><label>Name</label><input type="text" id="mName" placeholder="Your name"></div>
-          <div class="fld"><label>Company</label><input type="text" id="mCo" placeholder="Optional"></div>
+          <div class="fld"><label>Name</label><input type="text" id="mName" name="name" placeholder="Your name"></div>
+          <div class="fld"><label>Company</label><input type="text" id="mCo" name="company" placeholder="Optional"></div>
         </div>
-        <div class="fld"><label>Email</label><input type="email" id="mEmail" placeholder="you@company.com"></div>
+        <div class="fld"><label>Email</label><input type="email" id="mEmail" name="email" placeholder="you@company.com"></div>
         <div class="fld"><label>What do you need?</label>
-          <select id="mSvc">
+          <select id="mSvc" name="service">
             <option>OpenClaw setup &amp; optimization</option>
             <option selected>Website development</option>
             <option>Social media optimization</option>
             <option>Not sure yet, let's talk</option>
           </select>
         </div>
-        <div class="fld"><label>Project details</label><textarea id="mMsg" placeholder="A few sentences about what you're working on..."></textarea></div>
+        <div class="fld"><label>Project details</label><textarea id="mMsg" name="details" placeholder="A few sentences about what you're working on..."></textarea></div>
         <button class="btn btn-solid" onclick="submitForm()">Send it</button>
         <p class="fine">// Submitting sends your details to Miura Studios. We never share your information.</p>
       </div>
@@ -234,7 +242,24 @@
 <script>
 function openModal(e){if(e)e.preventDefault();document.getElementById('form').style.display='block';document.getElementById('ok').style.display='none';document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
-function submitForm(){var n=document.getElementById('mName').value.trim();var em=document.getElementById('mEmail').value.trim();if(!n||!em){alert('Please add your name and email.');return;}document.getElementById('form').style.display='none';document.getElementById('ok').style.display='block';}
+function encode(data){return Object.keys(data).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(data[k]);}).join('&');}
+function submitForm(){
+  var n=document.getElementById('mName').value.trim();
+  var em=document.getElementById('mEmail').value.trim();
+  if(!n||!em){alert('Please add your name and email.');return;}
+  var payload={
+    'form-name':'project-inquiry',
+    'name':n,
+    'email':em,
+    'company':document.getElementById('mCo').value.trim(),
+    'service':document.getElementById('mSvc').value,
+    'details':document.getElementById('mMsg').value.trim(),
+    'bot-field':document.getElementById('botField').value
+  };
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:encode(payload)})
+    .then(function(){document.getElementById('form').style.display='none';document.getElementById('ok').style.display='block';})
+    .catch(function(){alert('Something went wrong sending your message. Please email us directly or try again.');});
+}
 document.getElementById('modal').addEventListener('click',function(ev){if(ev.target===this)closeModal();});
 document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeModal();});
 </script>
