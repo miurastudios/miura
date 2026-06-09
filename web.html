@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Development | Miura Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0A0A0A;--ink:#101010;--panel:#141414;--line:rgba(255,255,255,0.14);--line-soft:rgba(255,255,255,0.07);--white:#F5F4F1;--dim:#8A8A87;--dimmer:#5C5C59;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Space Grotesk',sans-serif;background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .mono{font-family:'JetBrains Mono',monospace}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 36px}
+  .mark{width:40px;height:40px;flex-shrink:0;display:block}
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,0.82);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--line-soft)}
+  .nav-inner{max-width:1240px;margin:0 auto;padding:18px 36px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .name{font-weight:600;font-size:15px;letter-spacing:2px}
+  .brand .name span{color:var(--dim);font-weight:400}
+  .nav-links{display:flex;align-items:center;gap:36px;font-size:13.5px;color:var(--dim);letter-spacing:0.3px}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{border:0.5px solid var(--line);padding:10px 20px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--white);transition:all .2s;cursor:pointer;background:none;font-family:inherit}
+  .nav-cta:hover{background:var(--white);color:var(--black)}
+  .btn{font-family:inherit;cursor:pointer;font-size:14px;letter-spacing:0.5px;padding:16px 30px;transition:all .2s;border:none}
+  .btn-solid{background:var(--white);color:var(--black);font-weight:500}
+  .btn-solid:hover{transform:translateY(-1px)}
+  .btn-line{background:none;border:0.5px solid var(--line);color:var(--white)}
+  .btn-line:hover{border-color:var(--white)}
+  /* hero */
+  .phero{position:relative;padding:90px 0 80px;border-bottom:0.5px solid var(--line-soft);overflow:hidden}
+  .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 70% 40%,#000 0%,transparent 75%);opacity:0.6}
+  .phero-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 36px}
+  .crumb{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dimmer);letter-spacing:1px;margin-bottom:26px}
+  .crumb a:hover{color:var(--white)}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);border:0.5px solid var(--line);padding:7px 14px;margin-bottom:30px}
+  .phero h1{font-size:clamp(38px,5.5vw,64px);line-height:1.02;letter-spacing:-2px;font-weight:600;max-width:840px}
+  .phero .lede{font-size:18px;color:var(--dim);max-width:600px;margin:28px 0 40px;line-height:1.7}
+  /* detail */
+  .detail{padding:100px 0;border-bottom:0.5px solid var(--line-soft)}
+  .sec-label{display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:48px}
+  .sec-label::before{content:"";width:42px;height:0.5px;background:var(--line)}
+  .incl{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:0.5px solid var(--line-soft)}
+  .incl-item{padding:38px 34px;border-right:0.5px solid var(--line-soft);border-bottom:0.5px solid var(--line-soft)}
+  .incl-item:nth-child(2n){border-right:none}
+  .incl-item .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dimmer)}
+  .incl-item h4{font-size:20px;font-weight:600;margin:16px 0 10px;letter-spacing:-0.5px}
+  .incl-item p{color:var(--dim);font-size:15px;line-height:1.65}
+  /* split */
+  .split{padding:100px 0;border-bottom:0.5px solid var(--line-soft);display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .split h2{font-size:34px;letter-spacing:-1.2px;font-weight:600;line-height:1.1}
+  .split p{color:var(--dim);font-size:16px;line-height:1.75;margin-top:18px}
+  .fitlist{list-style:none}
+  .fitlist li{display:flex;gap:14px;padding:16px 0;border-top:0.5px solid var(--line-soft);font-size:15.5px;color:var(--white)}
+  .fitlist li:first-child{border-top:none}
+  .fitlist .c{color:var(--dim);flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:13px;padding-top:2px}
+  /* band */
+  .band{padding:120px 0;text-align:center;position:relative;overflow:hidden}
+  .band .grid-bg{mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000 0%,transparent 70%)}
+  .band-inner{position:relative;z-index:2}
+  .band h2{font-size:clamp(32px,5vw,56px);letter-spacing:-2px;font-weight:600;line-height:1.02;max-width:680px;margin:0 auto 26px}
+  .band p{color:var(--dim);font-size:17px;max-width:430px;margin:0 auto 38px}
+  /* footer */
+  footer{border-top:0.5px solid var(--line-soft);padding:64px 0 36px}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:48px;border-bottom:0.5px solid var(--line-soft)}
+  .foot-brand{max-width:300px}
+  .foot-brand .brand{margin-bottom:18px}
+  .foot-brand p{color:var(--dimmer);font-size:14px;line-height:1.7}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .foot-col h5{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dimmer);margin-bottom:16px}
+  .foot-col a{display:block;color:var(--dim);font-size:14px;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:var(--white)}
+  .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:28px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dimmer)}
+  .ig-badge{display:flex;flex-direction:column;align-items:center;gap:10px;margin:48px auto 0;width:fit-content;color:var(--dim);transition:color .2s,transform .2s}
+  .ig-badge:hover{color:var(--white);transform:translateY(-2px)}
+  .ig-badge svg{width:30px;height:30px}
+  .ig-badge span{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:0.5px}
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(5,5,5,0.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
+  .overlay.open{display:flex}
+  .dialog{background:var(--ink);border:0.5px solid var(--line);max-width:500px;width:100%;max-height:92vh;overflow-y:auto}
+  .dialog-head{padding:30px 34px;border-bottom:0.5px solid var(--line-soft);display:flex;align-items:flex-start;justify-content:space-between}
+  .dialog-head h3{font-size:22px;font-weight:600;letter-spacing:-0.5px}
+  .dialog-head p{color:var(--dim);font-size:13.5px;margin-top:6px}
+  .x{background:none;border:none;color:var(--dim);font-size:24px;cursor:pointer;line-height:1}
+  .x:hover{color:var(--white)}
+  .dialog-body{padding:30px 34px 34px}
+  .fld{margin-bottom:18px}
+  .fld label{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+  .fld input,.fld select,.fld textarea{width:100%;padding:13px 14px;background:var(--black);border:0.5px solid var(--line);color:var(--white);font-family:inherit;font-size:15px;transition:border-color .2s}
+  .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--white)}
+  .fld textarea{resize:vertical;min-height:84px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .dialog .btn-solid{width:100%;margin-top:6px}
+  .fine{font-size:11.5px;color:var(--dimmer);margin-top:14px;line-height:1.6;font-family:'JetBrains Mono',monospace}
+  .done{text-align:center;padding:30px 0}
+  .done .mark{width:64px;height:64px;margin:0 auto 22px}
+  .done h3{font-size:24px;font-weight:600;margin-bottom:10px;letter-spacing:-0.5px}
+  .done p{color:var(--dim);font-size:14.5px;max-width:320px;margin:0 auto}
+  @media(max-width:860px){.incl{grid-template-columns:1fr}.incl-item{border-right:none}.split{grid-template-columns:1fr;gap:36px}.nav-links a:not(.nav-cta){display:none}}
+  @media(max-width:560px){.wrap,.nav-inner,.phero-inner{padding-left:22px;padding-right:22px}.row2{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img class="mark" src="data:image/png;base64,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" alt="Miura Studios">
+      <span class="name"><b>MIURA</b> <span>STUDIOS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">Process</a>
+      <a href="#" onclick="openModal(event)">Contact</a>
+      <button class="nav-cta" onclick="openModal(event)">Start a project</button>
+    </div>
+  </div>
+</nav>
+<header class="phero">
+  <div class="grid-bg"></div>
+  <div class="phero-inner">
+    <div class="crumb"><a href="index.html">Home</a> / Services / Web</div>
+    <div class="eyebrow">Design &amp; build</div>
+    <h1>Sites that look sharp and actually convert.</h1>
+    <p class="lede">A site is not a brochure, it is a tool for turning attention into clients. We build fast, custom sites with the lead capture and booking flows that do that job, then host and maintain them so they keep working.</p>
+    <button class="btn btn-solid" onclick="openModal(event)">Start a project</button>
+  </div>
+</header>
+
+<section class="detail">
+  <div class="wrap">
+    <div class="sec-label">What you get</div>
+    <div class="incl">
+      <div class="incl-item"><div class="n">[ 01 ]</div><h4>Custom build</h4><p>Designed and coded for your brand specifically, not dropped into a template everyone else is using.</p></div>
+      <div class="incl-item"><div class="n">[ 02 ]</div><h4>Lead capture</h4><p>Forms and booking flows built in, so visitors have a clear path to becoming clients.</p></div>
+      <div class="incl-item"><div class="n">[ 03 ]</div><h4>Fast and responsive</h4><p>Quick to load and clean on every screen size, from desktop down to phone.</p></div>
+      <div class="incl-item"><div class="n">[ 04 ]</div><h4>Hosting and edits</h4><p>We host the site and handle changes for you, so updates do not sit in a queue for weeks.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap split">
+  <div>
+    <h2>Built to be managed, not abandoned.</h2>
+    <p>A lot of agencies hand you a site and disappear. We keep yours running on infrastructure we manage, so when something needs to change you send a note and we handle it.</p>
+  </div>
+  <ul class="fitlist">
+        <li><span class="c">+</span>You need a real site, not a DIY page builder</li>
+        <li><span class="c">+</span>You want lead capture that actually feeds you clients</li>
+        <li><span class="c">+</span>You do not want to manage hosting yourself</li>
+        <li><span class="c">+</span>You want changes handled without the hassle</li>
+  </ul>
+</section>
+
+<section class="band">
+  <div class="grid-bg"></div>
+  <div class="band-inner wrap">
+    <h2>Let us build your site.</h2>
+    <p>Tell us about your brand and what the site needs to do.</p>
+    <button class="btn btn-solid" onclick="openModal(event)">Start a project</button>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <img class="mark" src="data:image/png;base64,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" alt="Miura Studios">
+          <span class="name"><b>MIURA</b> <span>STUDIOS</span></span>
+        </a>
+        <p>AI systems, websites, and social infrastructure, built and managed for growing brands.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Services</h5>
+          <a href="openclaw.html">OpenClaw setup &amp; optimization</a>
+          <a href="web.html">Website development</a>
+          <a href="social.html">Social media optimization</a>
+        </div>
+        <div class="foot-col">
+          <h5>Studio</h5>
+          <a href="index.html#process">Process</a>
+          <a href="#" onclick="openModal(event)">Start a project</a>
+          <a href="https://instagram.com/miurasio" target="_blank" rel="noopener">Instagram &#8599;</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; 2026 MIURA STUDIOS LLC</span>
+      <span>LOS ANGELES &middot; ORANGE COUNTY, CA</span>
+    </div>
+    <a class="ig-badge" href="https://instagram.com/miurasio" target="_blank" rel="noopener" aria-label="Follow Miura Studios on Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+      <span>@miurasio</span>
+    </a>
+  </div>
+</footer>
+<div class="overlay" id="modal">
+  <div class="dialog">
+    <div id="form">
+      <div class="dialog-head">
+        <div><h3>Start a project</h3><p>Tell us what you're building. We reply within one business day.</p></div>
+        <button class="x" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <div class="row2">
+          <div class="fld"><label>Name</label><input type="text" id="mName" placeholder="Your name"></div>
+          <div class="fld"><label>Company</label><input type="text" id="mCo" placeholder="Optional"></div>
+        </div>
+        <div class="fld"><label>Email</label><input type="email" id="mEmail" placeholder="you@company.com"></div>
+        <div class="fld"><label>What do you need?</label>
+          <select id="mSvc">
+            <option>OpenClaw setup &amp; optimization</option>
+            <option selected>Website development</option>
+            <option>Social media optimization</option>
+            <option>Not sure yet, let's talk</option>
+          </select>
+        </div>
+        <div class="fld"><label>Project details</label><textarea id="mMsg" placeholder="A few sentences about what you're working on..."></textarea></div>
+        <button class="btn btn-solid" onclick="submitForm()">Send it</button>
+        <p class="fine">// Submitting sends your details to Miura Studios. We never share your information.</p>
+      </div>
+    </div>
+    <div id="ok" style="display:none">
+      <div class="dialog-head"><div><h3>Received</h3></div><button class="x" onclick="closeModal()">&times;</button></div>
+      <div class="dialog-body">
+        <div class="done">
+          <img class="mark" src="data:image/png;base64,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" alt="Miura Studios">
+          <h3>Message sent</h3>
+          <p>Thanks. We'll be in touch within one business day to talk through your project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function openModal(e){if(e)e.preventDefault();document.getElementById('form').style.display='block';document.getElementById('ok').style.display='none';document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+function submitForm(){var n=document.getElementById('mName').value.trim();var em=document.getElementById('mEmail').value.trim();if(!n||!em){alert('Please add your name and email.');return;}document.getElementById('form').style.display='none';document.getElementById('ok').style.display='block';}
+document.getElementById('modal').addEventListener('click',function(ev){if(ev.target===this)closeModal();});
+document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
