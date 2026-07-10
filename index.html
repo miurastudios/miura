@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miura Studios | AI Systems, Built and Managed</title>
+<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#15161A;
+    --ink:#1B1C21;
+    --panel:#212228;
+    --line:rgba(255,255,255,0.14);
+    --line-soft:rgba(255,255,255,0.07);
+    --white:#F5F4F1;
+    --dim:#8A8A87;
+    --dimmer:#5C5C59;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Space Grotesk',sans-serif;background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .mono{font-family:'JetBrains Mono',monospace}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 36px}
+
+  /* ===== logo mark (SVG) ===== */
+  .mark{width:40px;height:40px;flex-shrink:0;display:block}
+  .mark svg{width:100%;height:100%;display:block}
+
+  /* ===== nav ===== */
+  nav{position:sticky;top:0;z-index:50;background:rgba(21,22,26,0.82);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--line-soft)}
+  .nav-inner{max-width:1240px;margin:0 auto;padding:18px 36px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .name{font-weight:600;font-size:15px;letter-spacing:2px}
+  .brand .name b{font-weight:600}
+  .brand .name span{color:var(--dim);font-weight:400}
+  .nav-links{display:flex;align-items:center;gap:36px;font-size:13.5px;color:var(--dim);letter-spacing:0.3px}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{border:0.5px solid var(--line);padding:10px 20px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--white);transition:all .2s;cursor:pointer;background:none;font-family:inherit}
+  .nav-cta:hover{background:var(--white);color:var(--black)}
+
+  /* ===== hero ===== */
+  .hero{position:relative;padding:130px 0 120px;border-bottom:0.5px solid var(--line-soft);overflow:hidden}
+  .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 70% 40%,#000 0%,transparent 75%);opacity:0.6}
+  .hero-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 36px}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);border:0.5px solid var(--line);padding:7px 14px;margin-bottom:38px}
+  .tag .dot{width:6px;height:6px;background:var(--white);border-radius:50%;animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.25}}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,7vw,86px);line-height:0.98;letter-spacing:-2.5px;font-weight:600;max-width:980px}
+  h1 .out{font-style:normal;color:var(--dim)}
+  .hero p{font-size:18px;color:var(--dim);max-width:520px;margin:34px 0 44px;line-height:1.7}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{font-family:inherit;cursor:pointer;font-size:14px;letter-spacing:0.5px;padding:16px 30px;transition:all .2s;border:none}
+  .btn-solid{background:var(--white);color:var(--black);font-weight:500}
+  .btn-solid:hover{background:#fff;transform:translateY(-1px)}
+  .btn-line{background:none;border:0.5px solid var(--line);color:var(--white)}
+  .btn-line:hover{border-color:var(--white)}
+  .hero-meta{display:flex;gap:40px;margin-top:70px;flex-wrap:wrap}
+  .hero-meta .m .k{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:500;letter-spacing:-1px}
+  .hero-meta .m .l{font-size:12px;color:var(--dimmer);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+  /* ===== services ===== */
+  .services{padding:120px 0;border-bottom:0.5px solid var(--line-soft)}
+  .sec-label{display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:54px}
+  .sec-label::before{content:"";width:42px;height:0.5px;background:var(--line)}
+  .svc{display:grid;grid-template-columns:80px 1fr auto;gap:40px;align-items:start;padding:42px 0;border-top:0.5px solid var(--line-soft);transition:padding-left .3s}
+  .svc:last-child{border-bottom:0.5px solid var(--line-soft)}
+  .svc:hover{padding-left:12px}
+  .svc .idx{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dimmer);padding-top:8px}
+  .svc .body h3{font-size:30px;font-weight:600;letter-spacing:-1px;margin-bottom:12px}
+  .svc .body p{color:var(--dim);font-size:16px;max-width:560px;line-height:1.7}
+  .svc .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .svc .tags span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);border:0.5px solid var(--line-soft);padding:5px 10px}
+  .svc .arrow{font-size:24px;color:var(--dimmer);padding-top:6px;transition:transform .3s,color .3s}
+  .svc:hover .arrow{color:var(--white);transform:translate(6px,-6px)}
+
+  /* ===== process ===== */
+  .process{padding:120px 0;border-bottom:0.5px solid var(--line-soft)}
+  .proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:0.5px solid var(--line-soft)}
+  .proc-cell{padding:44px 34px;border-right:0.5px solid var(--line-soft)}
+  .proc-cell:last-child{border-right:none}
+  .proc-cell .step{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dimmer);letter-spacing:1px}
+  .proc-cell h4{font-size:21px;font-weight:600;margin:20px 0 12px;letter-spacing:-0.5px}
+  .proc-cell p{color:var(--dim);font-size:14.5px;line-height:1.7}
+
+  /* ===== cta band ===== */
+  .band{padding:130px 0;text-align:center;position:relative;overflow:hidden}
+  .band .grid-bg{mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000 0%,transparent 70%)}
+  .band-inner{position:relative;z-index:2}
+  .band h2{font-size:clamp(36px,5.5vw,64px);letter-spacing:-2px;font-weight:600;line-height:1.02;max-width:760px;margin:0 auto 28px}
+  .band p{color:var(--dim);font-size:17px;max-width:440px;margin:0 auto 40px}
+
+  /* ===== footer ===== */
+  footer{border-top:0.5px solid var(--line-soft);padding:64px 0 36px}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:48px;border-bottom:0.5px solid var(--line-soft)}
+  .foot-brand{max-width:320px;flex:1 1 280px}
+  .foot-brand .brand{margin-bottom:18px}
+  .foot-brand p{color:var(--dimmer);font-size:14px;line-height:1.7}
+  .foot-cols{display:flex;gap:80px;flex-wrap:wrap;flex:1 1 auto;justify-content:flex-start}
+  .foot-col{min-width:160px}
+  .foot-col h5{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dimmer);margin-bottom:16px}
+  .foot-col a{display:block;color:var(--dim);font-size:14px;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:var(--white)}
+  .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:0.5px solid var(--line-soft);font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dimmer)}
+  .ig-badge{display:flex;align-items:center;justify-content:center;margin:0 auto;padding:34px 0 28px;width:100%;color:var(--dim);transition:color .2s}
+  .ig-badge:hover{color:var(--white)}
+  .ig-badge svg{width:28px;height:28px}
+
+  /* ===== modal ===== */
+  .overlay{position:fixed;inset:0;background:rgba(10,11,14,0.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
+  .overlay.open{display:flex}
+  .dialog{background:var(--ink);border:0.5px solid var(--line);max-width:500px;width:100%;animation:rise .3s ease;max-height:92vh;overflow-y:auto}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .dialog-head{padding:30px 34px;border-bottom:0.5px solid var(--line-soft);display:flex;align-items:flex-start;justify-content:space-between}
+  .dialog-head h3{font-size:22px;font-weight:600;letter-spacing:-0.5px}
+  .dialog-head p{color:var(--dim);font-size:13.5px;margin-top:6px}
+  .x{background:none;border:none;color:var(--dim);font-size:24px;cursor:pointer;line-height:1}
+  .x:hover{color:var(--white)}
+  .dialog-body{padding:30px 34px 34px}
+  .fld{margin-bottom:18px}
+  .fld label{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+  .fld input,.fld select,.fld textarea{width:100%;padding:13px 14px;background:var(--black);border:0.5px solid var(--line);color:var(--white);font-family:inherit;font-size:15px;transition:border-color .2s}
+  .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--white)}
+  .fld textarea{resize:vertical;min-height:84px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .dialog .btn-solid{width:100%;margin-top:6px}
+  .fine{font-size:11.5px;color:var(--dimmer);margin-top:14px;line-height:1.6;font-family:'JetBrains Mono',monospace}
+  .done{text-align:center;padding:30px 0}
+  .done .mark{width:64px;height:64px;margin:0 auto 22px}
+  .done h3{font-size:24px;font-weight:600;margin-bottom:10px;letter-spacing:-0.5px}
+  .done p{color:var(--dim);font-size:14.5px;max-width:320px;margin:0 auto}
+
+  @media(max-width:860px){
+    .proc-grid{grid-template-columns:1fr}
+    .proc-cell{border-right:none;border-bottom:0.5px solid var(--line-soft)}
+    .proc-cell:last-child{border-bottom:none}
+    .svc{grid-template-columns:1fr;gap:14px}
+    .svc .idx{padding-top:0}
+    .svc .arrow{display:none}
+    .nav-links a:not(.nav-cta){display:none}
+  }
+  @media(max-width:560px){
+    .wrap,.nav-inner,.hero-inner{padding-left:22px;padding-right:22px}
+    .row2{grid-template-columns:1fr}
+    .hero-meta{gap:28px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<form name="project-inquiry" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="company" />
+  <input type="text" name="service" />
+  <textarea name="details"></textarea>
+</form>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <img class="mark" src="data:image/png;base64,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" alt="Miura Studios">
+      <span class="name"><b>MIURA</b> <span>STUDIOS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact" onclick="openModal(event)">Contact</a>
+      <button class="nav-cta" onclick="openModal(event)">Start a project</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="grid-bg"></div>
+  <div class="hero-inner">
+    <div class="tag"><span class="dot"></span>AI systems · web · social</div>
+    <h1>Short-form effort, <span class="out">long-term</span> growth.</h1>
+    <p>Miura Studios builds and runs the systems behind growing brands. AI infrastructure, the websites that sit on top of it, and the social presence that brings people in.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-solid" onclick="openModal(event)">Start a project</button>
+      <a href="#services"><button class="btn btn-line">See what we do</button></a>
+    </div>
+    <div class="hero-meta">
+      <div class="m"><div class="k">1B+</div><div class="l">Organic views driven</div></div>
+      <div class="m"><div class="k">5+ yrs</div><div class="l">Building for brands</div></div>
+      <div class="m"><div class="k">100%</div><div class="l">Built and managed</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-label">What we do</div>
+    <div class="svc" onclick="openModal(event)">
+      <div class="idx">[ 01 ]</div>
+      <div class="body">
+        <h3>AI setup &amp; optimization</h3>
+        <p>We deploy your AI stack end to end and tune it to run lean. Provisioning, configuration, and integration with the tools you already use, then ongoing optimization so it stays fast and the costs stay predictable.</p>
+        <div class="tags"><span>Deployment</span><span>Configuration</span><span>Cost tuning</span></div>
+      </div>
+      <div class="arrow">↗</div>
+    </div>
+    <div class="svc" onclick="openModal(event)">
+      <div class="idx">[ 02 ]</div>
+      <div class="body">
+        <h3>Website development</h3>
+        <p>Fast, custom-built sites with the lead capture and booking flows that turn visitors into clients. We host and maintain them too, so when you need a change, we handle it.</p>
+        <div class="tags"><span>Custom build</span><span>Lead capture</span><span>Hosting + edits</span></div>
+      </div>
+      <div class="arrow">↗</div>
+    </div>
+    <div class="svc" onclick="openModal(event)">
+      <div class="idx">[ 03 ]</div>
+      <div class="body">
+        <h3>Social media optimization</h3>
+        <p>Strategy and systems for growing a real audience. Content cadence, automated posting, and analytics that show what is working, backed by a track record of over a billion organic views.</p>
+        <div class="tags"><span>Strategy</span><span>Automation</span><span>Analytics</span></div>
+      </div>
+      <div class="arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-label">How we work</div>
+    <div class="proc-grid">
+      <div class="proc-cell">
+        <div class="step">01 / SCOPE</div>
+        <h4>We map the system</h4>
+        <p>A short call to understand your operation, where the bottlenecks are, and what's worth automating first.</p>
+      </div>
+      <div class="proc-cell">
+        <div class="step">02 / BUILD</div>
+        <h4>We deploy it</h4>
+        <p>Setup, configuration, and launch. The website, the AI stack, the posting system, whatever the scope calls for.</p>
+      </div>
+      <div class="proc-cell">
+        <div class="step">03 / RUN</div>
+        <h4>We keep it running</h4>
+        <p>A monthly retainer covers monitoring, edits, and tuning. You focus on the business while we own the infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="grid-bg"></div>
+  <div class="band-inner wrap">
+    <h2>Let's build something that runs itself.</h2>
+    <p>Tell us what you're working on. We'll tell you what we'd automate first.</p>
+    <button class="btn btn-solid" onclick="openModal(event)">Start a project</button>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Services</h5>
+          <a href="ai.html">AI setup &amp; optimization</a>
+          <a href="web.html">Website development</a>
+          <a href="social.html">Social media optimization</a>
+        </div>
+        <div class="foot-col">
+          <h5>Studio</h5>
+          <a href="#process">Process</a>
+          <a href="#" onclick="openModal(event)">Start a project</a>
+        </div>
+      </div>
+    </div>
+    <a class="ig-badge" href="https://instagram.com/miurasio" target="_blank" rel="noopener" aria-label="Follow Miura Studios on Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <div class="foot-bot">
+      <span>© 2026 MIURA STUDIOS LLC</span>
+      <span>LOS ANGELES · ORANGE COUNTY, CA</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="modal">
+  <div class="dialog">
+    <div id="form">
+      <div class="dialog-head">
+        <div>
+          <h3>Start a project</h3>
+          <p>Tell us what you're building. We reply within one business day.</p>
+        </div>
+        <button class="x" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <p hidden><label>Don't fill this out: <input name="bot-field" id="botField"></label></p>
+        <div class="row2">
+          <div class="fld"><label>Name</label><input type="text" id="mName" name="name" placeholder="Your name"></div>
+          <div class="fld"><label>Company</label><input type="text" id="mCo" name="company" placeholder="Optional"></div>
+        </div>
+        <div class="fld"><label>Email</label><input type="email" id="mEmail" name="email" placeholder="you@company.com"></div>
+        <div class="fld"><label>What do you need?</label>
+          <select id="mSvc" name="service">
+            <option>AI setup &amp; optimization</option>
+            <option>Website development</option>
+            <option>Social media optimization</option>
+            <option>Not sure yet, let's talk</option>
+          </select>
+        </div>
+        <div class="fld"><label>Project details</label><textarea id="mMsg" name="details" placeholder="A few sentences about what you're working on..."></textarea></div>
+        <button class="btn btn-solid" onclick="submitForm()">Send it</button>
+        <p class="fine">// Submitting sends your details to Miura Studios. We never share your information.</p>
+      </div>
+    </div>
+    <div id="ok" style="display:none">
+      <div class="dialog-head">
+        <div><h3>Received</h3></div>
+        <button class="x" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <div class="done">
+          <img class="mark" src="data:image/png;base64,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" alt="Miura Studios">
+          <h3>Message sent</h3>
+          <p>Thanks. We'll be in touch within one business day to talk through your project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(e){if(e)e.preventDefault();document.getElementById('form').style.display='block';document.getElementById('ok').style.display='none';document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+function encode(data){return Object.keys(data).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(data[k]);}).join('&');}
+function submitForm(){
+  var n=document.getElementById('mName').value.trim();
+  var em=document.getElementById('mEmail').value.trim();
+  if(!n||!em){alert('Please add your name and email.');return;}
+  var payload={
+    'form-name':'project-inquiry',
+    'name':n,
+    'email':em,
+    'company':document.getElementById('mCo').value.trim(),
+    'service':document.getElementById('mSvc').value,
+    'details':document.getElementById('mMsg').value.trim(),
+    'bot-field':document.getElementById('botField').value
+  };
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:encode(payload)})
+    .then(function(){document.getElementById('form').style.display='none';document.getElementById('ok').style.display='block';})
+    .catch(function(){alert('Something went wrong sending your message. Please email us directly or try again.');});
+}
+document.getElementById('modal').addEventListener('click',function(ev){if(ev.target===this)closeModal();});
+document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
